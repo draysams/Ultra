@@ -1,4 +1,4 @@
-https://getultra.io
+http://getultra.io
 
 Ultra is a visual, cross-platform SSH client that parses your terminal output to improve readability and show documentation on mouseover.
 
