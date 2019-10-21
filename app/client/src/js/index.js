@@ -13,7 +13,9 @@ var unidecode = require('unidecode');
 require('xterm/dist/xterm.css')
 require('../css/style.css')
 require('../css/sb-admin-2.css')
-let ejs = require('../js/ejs.min.js')
+// let ejs = require('../js/ejs.min.js')
+
+
 // var script = document.createElement('script');
 // script.src = 'https://code.jquery.com/jquery-3.4.1.min.js';
 // script.type = 'text/javascript';
@@ -72,6 +74,7 @@ function beautify(topText) {
   // pretty.innerHTML = topText;
   // // console.log(term.buffer.getLine(term.buffer.length - 1).translateToString());
   // return;
+  console.log(topText);
   let lines = topText.split("\n");
   let firstLineIndex = 0;
   for (let i = 0; i < lines.length; i++) {
@@ -98,21 +101,21 @@ function beautify(topText) {
   let firstProcessIndex = firstLineIndex + 7;
   for (let i = firstProcessIndex; i < lines.length; i++) {
     let line = lines[i].match(/\S+/g) || [];
-    if (line.length > 0 || i > processes.length) {
-      if (i > processes.length) {
-        processes.push(line)
-      } else {
-        processes[i] = line
+    if (line.length > 0 || i - firstProcessIndex >= processes.length) {
+      if (i - firstProcessIndex >= processes.length) {
+        for (let j = processes.length; j <= i - firstProcessIndex; j++) {
+          processes.push([]);
+        }
       }
+      processes[i - firstProcessIndex] = line;
     }
   }
 
-  console.log(info);
 
   let htmlString = `
   <br>
-  <div>
-  <div class="row">
+  <div class="text-sm">
+  <div class="row ">
   <div class="col-12">
   <h4>Mouseover the <span style="color: #fd7e14; font-weight:bold;" id="orange-label"> orange labels</span> to view explanations.</h4>
   </div>
@@ -289,8 +292,17 @@ function beautify(topText) {
 
   for (let i=0; i < processes.length; i++) { 
     htmlString + `<tr>`
-    for (let j=0; j < processes[i].length; j++) { 
-      htmlString += `<td>` + getProcess(i,j) + `</td>`
+    for (let j=0; j <= 11; j++) { 
+      if (j == 11) {
+        let commandString = "";
+        for (let k=j; k < processes[i].length; k++) {
+          commandString += getProcess(i,k) + " ";
+        }
+        htmlString += `<td>` + commandString + `</td>`
+
+      } else {
+        htmlString += `<td>` + getProcess(i,j) + `</td>`
+      }
     } 
     htmlString += `</tr>`
   } 
@@ -305,8 +317,8 @@ function beautify(topText) {
   `;
 
 
-  let html = ejs.render(htmlString, {processes: processes, info: info});
-  pretty.innerHTML = html;
+  // let html = ejs.render(htmlString, {processes: processes, info: info});
+  pretty.innerHTML = htmlString;
   $('#orange-label').qtip({ // Grab some elements to apply the tooltip to
     content: {
       text: 'Documentation shows up like this.'

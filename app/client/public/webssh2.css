@@ -335,6 +335,10 @@ body, html  {
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+.formatted {
+  background: #fff;
+}
+
 .table-condensed {
   font-size: 12px;
   font-family: monospace;
@@ -382,7 +386,7 @@ body {
   line-height: 1.5;
   color: #858796;
   text-align: left;
-  background-color: #fff;
+  /*background-color: #fff;*/
 }
 
 [tabindex="-1"]:focus {
@@ -1991,16 +1995,16 @@ pre code {
 .table td {
   padding: 0.75rem;
   vertical-align: top;
-  border-top: 1px solid #e3e6f0;
+  border-top: 0px solid #e3e6f0;
 }
 
 .table thead th {
   vertical-align: bottom;
-  border-bottom: 2px solid #e3e6f0;
+  border-bottom: 0px solid #e3e6f0;
 }
 
 .table tbody + tbody {
-  border-top: 2px solid #e3e6f0;
+  border-top: 0px solid #e3e6f0;
 }
 
 .table-sm th,
@@ -10878,6 +10882,8 @@ a.text-dark:hover, a.text-dark:focus {
 html {
   position: relative;
   min-height: 100%;
+  background: #fff;
+
 }
 
 body {
