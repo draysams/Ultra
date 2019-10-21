@@ -6,20 +6,51 @@
     html, body {background-color: #000;height: 100%;margin: 0;}.dropup-content {display: none;}
   </style>
   <link rel="stylesheet" href="/webssh2.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+  rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <link href="https://cdn.jsdelivr.net/qtip2/3.0.3/jquery.qtip.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/qtip2/3.0.3/jquery.qtip.min.js"></script>
+
+
+
+
 </head>
 <body>
-  <div class="box">
-    <div id="header"></div>
-    <div id="terminal-container" class="terminal"></div>
-    <div id="bottomdiv">
-      <div class="dropup" id="menu">
-        <i class="fas fa-bars fa-fw"></i> Menu
-        <div id="dropupContent" class="dropup-content"></div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="box">
+          <div id="header"></div>
+          <div id="terminal-container" class="terminal"></div>
+          <div id="bottomdiv">
+            <div class="dropup" id="menu">
+              <i class="fas fa-bars fa-fw"></i> Menu
+              <div id="dropupContent" class="dropup-content"></div>
+            </div>
+            <div id="footer"></div>
+            <div id="status"></div>
+          </div>
+        </div>
       </div>
-      <div id="footer"></div>
-      <div id="status"></div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+<!--         <textarea class="form-control" id="pretty" rows="20">
+        </textarea> -->
+        <div id="pretty">
+        </div>
+      </div>
     </div>
   </div>
+</div>
+
 <script src="/webssh2.bundle.js" defer></script>
 </body>
 </html>
