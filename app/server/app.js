@@ -10,6 +10,7 @@ var publicPath = path.join(nodeRoot, 'client', 'public')
 console.log('WebSSH2 service reading config from: ' + configPath)
 var express = require('express')
 var logger = require('morgan')
+var url = require('url');
 
 // sane defaults if config.json or parts are missing
 let config = {
@@ -125,6 +126,17 @@ app.disable('x-powered-by')
 
 // static files
 app.use(express.static(publicPath, expressOptions))
+
+app.get('/', function (req, res, next) {
+  res.sendFile(path.join(path.join(publicPath, 'index.htm')))
+});
+
+app.get('/connect', function (req, res, next) {
+  var url_parts = url.parse(req.url, true);
+  var query = url_parts.query;
+  console.log("query is " + query.ip);
+  res.redirect('/ssh/host/' + query.ip);
+});
 
 app.get('/reauth', function (req, res, next) {
   var r = req.headers.referer || '/'

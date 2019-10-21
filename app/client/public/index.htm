@@ -1,24 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WebSSH2</title>
+  <title>Ultra - Visual SSH Client</title>
   <style>
     html, body {background-color: #000;height: 100%;margin: 0;}.dropup-content {display: none;}
   </style>
   <link rel="stylesheet" href="/webssh2.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link href="/sb-admin-2.css" rel="stylesheet">
-
+  <link href="sb-admin-2.css" rel="stylesheet">
 
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
   rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-  <link href="https://cdn.jsdelivr.net/qtip2/3.0.3/jquery.qtip.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/qtip2/3.0.3/jquery.qtip.min.js"></script>
-
 
 
 
@@ -28,10 +22,30 @@
 
     <div class="row">
       <div class="col-12 mt-5 mb-2 text-center">
-        <p>This brower-based demo (<a href="https://github.com/wkwan/Ultra" target="_blank">source code</a>) only parses the bash command <b>top</b> (tested on Ubuntu 18.04.3 LTS), but it's forked from WebSSH2, so it can SSH into any server.</p>
-        <p>I'm working on a desktop version that parses more command outputs. Drop your email if you're interested, or (even better!) <a href="https://twitter.com/_willkwan" target="_blank">DM me on Twitter</a> with any suggestions or questions.</p>
+        <h4><b>Ultra</b> is a visual, cross-platform SSH client that  parses your terminal output to improve readability and show documentation on mouseover.</h4>
+
+
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3 col-12">
+        <form method="get" action="/connect">
+          <label for="ip">IP Address</label>
+          <input type="text" name="ip" id="ip" class="form-control" placeholder="Your Server's IP Address, or '67.205.180.23' for the Demo Server"></input>
+          <input type="submit" class="btn btn-large form-control btn-success mt-2" value="SSH into a Server to Try Demo"/>
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 mt-3 mb-2 text-center">
+        <p>This brower-based demo (<a href="https://github.com/wkwan/Ultra" target="_blank">source code</a>) only parses the bash command <b>top</b> (tested on Ubuntu 18.04.3 LTS), but it's forked from WebSSH2, so it can SSH into any server. I setup a demo server (<b>67.205.180.23</b>, username and password is <b>demo</b>) in case you're not comfortable SSH'ing into one of your own servers through my client. I'm not responsible for anything that people do to the demo server.</p>
+        <p>I'm working on a desktop version that parses more command outputs. Drop your email if you're interested, or (even better!) <a href="https://twitter.com/_willkwan" target="_blank">DM me on Twitter</a> with any suggestions or questions.</p>
+      </div>
+
+    </div>
+
 
     <div class="row">
       <div class="col-lg-4 offset-lg-4 col-12">
@@ -58,33 +72,8 @@
 
     </div>
 
-    <div class="row">
-      <div class="col-12">
-        <div class="box">
-          <div id="header"></div>
-          <div id="terminal-container" class="terminal"></div>
-          <div id="bottomdiv">
-            <div class="dropup" id="menu">
-              <i class="fas fa-bars fa-fw"></i> Menu
-              <div id="dropupContent" class="dropup-content"></div>
-            </div>
-            <div id="footer"></div>
-            <div id="status"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-<!--         <textarea class="form-control" id="pretty" rows="20">
-</textarea> -->
-<div id="pretty">
-</div>
-</div>
-</div>
-</div>
-</div>
 
-<script src="/webssh2.bundle.js" defer></script>
+  </div>
+</div>
 </body>
 </html>

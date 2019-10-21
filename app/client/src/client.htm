@@ -7,6 +7,7 @@
   </style>
   <link rel="stylesheet" href="/webssh2.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="/sb-admin-2.css" rel="stylesheet">
 
 
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -24,6 +25,39 @@
 </head>
 <body>
   <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-12 mt-5 mb-2 text-center">
+        <p>This brower-based demo (<a href="https://github.com/wkwan/Ultra" target="_blank">source code</a>) only parses the bash command <b>top</b> (tested on Ubuntu 18.04.3 LTS), but it's forked from WebSSH2, so it can SSH into any server.</p>
+        <p>I'm working on a desktop version that parses more command outputs. Drop your email if you're interested, or (even better!) <a href="https://twitter.com/_willkwan" target="_blank">DM me on Twitter</a> with any suggestions or questions.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4 offset-lg-4 col-12">
+        <!-- Begin Mailchimp Signup Form -->
+        <div id="mc_embed_signup">
+          <form action="https://getultra.us20.list-manage.com/subscribe/post?u=5e0b1a43b20245b83016fa495&amp;id=e9620ceda7" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+            <div id="mc_embed_signup_scroll">
+
+              <div class="mc-field-group">
+                <input type="email" value="" name="EMAIL" class="required email form-control" placeholder="Email" id="mce-EMAIL">
+              </div>
+              <div id="mce-responses" class="clear">
+                <div class="response" id="mce-error-response" style="display:none"></div>
+                <div class="response" id="mce-success-response" style="display:none"></div>
+              </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+              <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_5e0b1a43b20245b83016fa495_e9620ceda7" tabindex="-1" value=""></div>
+              <div class="clear py-2 mb-3"><input type="submit" value="Signup for Beta" name="subscribe" id="mc-embedded-subscribe" class="form-control btn btn-primary"></div>
+            </div>
+          </form>
+        </div>
+        <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+        <!--End mc_embed_signup-->
+      </div>
+
+    </div>
+
     <div class="row">
       <div class="col-12">
         <div class="box">
@@ -43,12 +77,12 @@
     <div class="row">
       <div class="col-12">
 <!--         <textarea class="form-control" id="pretty" rows="20">
-        </textarea> -->
-        <div id="pretty">
-        </div>
-      </div>
-    </div>
-  </div>
+</textarea> -->
+<div id="pretty">
+</div>
+</div>
+</div>
+</div>
 </div>
 
 <script src="/webssh2.bundle.js" defer></script>

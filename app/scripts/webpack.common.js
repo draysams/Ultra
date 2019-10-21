@@ -15,6 +15,8 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       './client/src/client.htm',
+      './client/src/index.htm',
+      './client/src/css/sb-admin-2.css',
       './client/src/favicon.ico'
     ]),
     new ExtractTextPlugin('[name].css')
