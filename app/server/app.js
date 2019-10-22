@@ -120,7 +120,6 @@ var expressOptions = require('./expressOptions')
 // express
 app.use(compression({ level: 9 }))
 app.use(session)
-app.use(myutil.basicAuth)
 if (config.accesslog) app.use(logger('common'))
 app.disable('x-powered-by')
 
@@ -130,6 +129,8 @@ app.use(express.static(publicPath, expressOptions))
 app.get('/', function (req, res, next) {
   res.sendFile(path.join(path.join(publicPath, 'index.htm')))
 });
+
+app.use(myutil.basicAuth)
 
 app.get('/connect', function (req, res, next) {
   var url_parts = url.parse(req.url, true);

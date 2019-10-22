@@ -67,13 +67,6 @@ function getProcess(row, col) {
 }
 
 function beautify(topText) {
-  // term.selectAll();
-  // let selection = window.getSelection().toString();
-  // console.log("selection is " + selection);
-  // pretty.innerHTML = selection;
-  // pretty.innerHTML = topText;
-  // // console.log(term.buffer.getLine(term.buffer.length - 1).translateToString());
-  // return;
   console.log(topText);
   let lines = topText.split("\n");
   let firstLineIndex = 0;
@@ -111,6 +104,16 @@ function beautify(topText) {
     }
   }
 
+  let uptimeString;
+  let userCountIndex;
+  if (getInfo(0, 5) == "days,") {
+    uptimeString = getInfo(0,4) + " " +  getInfo(0,5) + " " + getInfo(0,6).slice(0, -1);
+    userCountIndex = 7;
+  } else { //uptime less than 1 day
+    uptimeString = getInfo(0, 4).slice(0, -1);
+    userCountIndex = 5;
+  }
+
 
   let htmlString = `
   <br>
@@ -126,10 +129,10 @@ function beautify(topText) {
   <p><b>Current time:</b> ` + getInfo(0,2) + ` </p>
   </div>
   <div class="col-4">
-  <p><b>System uptime:</b> ` + getInfo(0,4) + " " +  getInfo(0,5) + " " + getInfo(0,6).slice(0, -1) + ` </p>
+  <p><b>System uptime:</b> ` + uptimeString + ` </p>
   </div>
   <div class="col-4">
-  <p><b>Connected users:</b> ` + getInfo(0,7) + " " + getInfo(0,8).slice(0, -1) + ` </p>
+  <p><b>Connected users:</b> ` + getInfo(0,userCountIndex) + ` </p>
   </div>
   </div>
   <div class="row">
@@ -139,14 +142,14 @@ function beautify(topText) {
   </div>
   <div class="row">
   <div class="col-4">
-  <p><b>1 min:</b> ` + getInfo(0,11).slice(0, -1) + `</p>
+  <p><b>1 min:</b> ` + getInfo(0,userCountIndex + 3).slice(0, -1) + `</p>
   </div>
   <div class="col-4">
-  <p><b>5 min:</b> ` + getInfo(0,12).slice(0, -1) + `</p>
+  <p><b>5 min:</b> ` + getInfo(0,userCountIndex + 4).slice(0, -1) + `</p>
 
   </div>
   <div class="col-4">
-  <p><b>15 min:</b> ` + getInfo(0,13) + `</p>
+  <p><b>15 min:</b> ` + getInfo(0,userCountIndex + 5) + `</p>
 
   </div>
   </div>
@@ -331,48 +334,48 @@ function beautify(topText) {
   });
   $('#pid').qtip({ // Grab some elements to apply the tooltip to
     content: {
-      text: 'This is a unique number used to identify the process.'
+      text: 'Unique number used to identify the process.'
     }
   });
   $('#user').qtip({ // Grab some elements to apply the tooltip to
     content: {
-      text: 'The username of whoever launched the process.'
+      text: 'Username of whoever launched the process.'
     }
   });
   $('#pr').qtip({ // Grab some elements to apply the tooltip to
     content: {
-      text: 'The priority of the process. Processes with higher priority will be favored by the kernel and given more CPU time than processes with lower priority. The lower this value, the higher the actual priority; the highest priority on *nix is -20 and the lowest is 20.'
+      text: 'Priority of the process. Processes with higher priority will be favored by the kernel and given more CPU time than processes with lower priority. The lower this value, the higher the actual priority; the highest priority on *nix is -20 and the lowest is 20.'
     }
   });
   $('#ni').qtip({ // Grab some elements to apply the tooltip to
     content: {
-      text: 'The “nice” value of a process. The nice value affects the priority of a process.'
+      text: '“Nice” value of a process. The nice value affects the priority of a process.'
     }
   });
 
   $('#virt').qtip({ // Grab some elements to apply the tooltip to
     content: {
-      text: 'The total amount of virtual memory used by the process.'
+      text: 'Total amount of virtual memory used by the process.'
     }
   });
   $('#res').qtip({ // Grab some elements to apply the tooltip to
     content: {
-      text: 'The memory consumed by the process in RAM.'
+      text: 'Memory consumed by the process in RAM.'
     }
   });
   $('#shr').qtip({ // Grab some elements to apply the tooltip to
     content: {
-      text: 'The amount of memory shared with other processes.'
+      text: 'Amount of memory shared with other processes.'
     }
   });
   $('#s').qtip({ // Grab some elements to apply the tooltip to
     content: {
-      text: 'The process state in the single-letter form.'
+      text: 'Process state in the single-letter form.'
     }
   });
   $('#cpu').qtip({ // Grab some elements to apply the tooltip to
     content: {
-      text: 'The percentage of your CPU that is being used by the process. By default, top displays this as a percentage of a single CPU. On multi-core systems, you can have percentages that are greater than 100%. For example, if 3 cores are at 60% use, top will show a CPU use of 180%. See here for more information. You can toggle this behavior by hitting Shift-i while top is running to show the overall percentage of available CPUs in use.'
+      text: 'Percentage of your CPU that is being used by the process. By default, top displays this as a percentage of a single CPU. On multi-core systems, you can have percentages that are greater than 100%. For example, if 3 cores are at 60% use, top will show a CPU use of 180%. See here for more information. You can toggle this behavior by hitting Shift-i while top is running to show the overall percentage of available CPUs in use.'
     }
   });
   $('#mem').qtip({ // Grab some elements to apply the tooltip to
@@ -382,12 +385,12 @@ function beautify(topText) {
   });
   $('#time').qtip({ // Grab some elements to apply the tooltip to
     content: {
-      text: 'The total CPU time used by the process since it started, precise to the hundredths of a second.'
+      text: 'Total CPU time used by the process since it started, precise to the hundredths of a second.'
     }
   });
   $('#command').qtip({ // Grab some elements to apply the tooltip to
     content: {
-      text: 'The name of the process.'
+      text: 'Name of the process.'
     }
   });
   $('#tasks-total').qtip({ // Grab some elements to apply the tooltip to
@@ -397,12 +400,12 @@ function beautify(topText) {
   });
   $('#tasks-running').qtip({ // Grab some elements to apply the tooltip to
     content: {
-      text: 'A process in this state is either executing on the CPU, or it is present on the run queue, ready to be executed.'
+      text: 'These processes are either executing on the CPU or present on the run queue, ready to be executed.'
     }
   });
   $('#tasks-sleeping').qtip({ // Grab some elements to apply the tooltip to
     content: {
-      text: 'Processes in this state are waiting for an event to complete.'
+      text: 'These processes are waiting for an event to complete.'
     }
   });
   $('#tasks-stopped').qtip({ // Grab some elements to apply the tooltip to
@@ -417,7 +420,7 @@ function beautify(topText) {
   });
   $('#cpu-us').qtip({ // Grab some elements to apply the tooltip to
     content: {
-      text: 'Time running un-niced user processes'
+      text: 'Time running un-niced user processes.'
     }
   });
   $('#cpu-sy').qtip({ // Grab some elements to apply the tooltip to
@@ -487,7 +490,7 @@ function beautify(topText) {
   });
   $('#swap-avail-mem').qtip({ // Grab some elements to apply the tooltip to
     content: {
-      text: 'The amount of memory that can be allocated to processes without causing more swapping.'
+      text: 'Amount of memory that can be allocated to processes without causing more swapping.'
     }
   });
 }
@@ -514,10 +517,8 @@ term.on('data', function (data) {
 
 socket.on('data', function (data) {
   term.write(data)
-  // beautify(data)
 
-  if (data.includes('top - ')) {
-    console.log("FOUND THE TOP");
+  if (data.includes('top - ') || data.includes('Tasks: ') || data.includes('%Cpu(s): ') || data.includes('KiB Mem :') || data.include('KiB Swap:')) { // TODO: find a reliable way to identify command outputs
     var topOutput = data.replace(/[\u001b\u009b][[\]()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><;]/g, '')
     beautify(topOutput)
   }
