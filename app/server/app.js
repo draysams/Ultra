@@ -16,7 +16,7 @@ var url = require('url');
 let config = {
   'listen': {
     'ip': '0.0.0.0',
-    'port': 2222
+    'port': 80
   },
   'user': {
     'name': null,
