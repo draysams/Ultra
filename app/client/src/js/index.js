@@ -518,7 +518,7 @@ term.on('data', function (data) {
 socket.on('data', function (data) {
   term.write(data)
 
-  if (data.includes('top - ') || data.includes('Tasks: ') || data.includes('%Cpu(s): ') || data.includes('KiB Mem :') || data.include('KiB Swap:')) { // TODO: find a reliable way to identify command outputs
+  if (data.includes('top - ') || data.includes('Tasks: ') || data.includes('%Cpu(s): ') || data.includes('KiB Mem :') || data.includes('KiB Swap:')) { // TODO: find a reliable way to identify command outputs
     var topOutput = data.replace(/[\u001b\u009b][[\]()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><;]/g, '')
     beautify(topOutput)
   }
