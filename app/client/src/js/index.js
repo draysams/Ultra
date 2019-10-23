@@ -67,13 +67,11 @@ function getProcess(row, col) {
 }
 
 function beautify(topText) {
-  console.log(topText);
   let lines = topText.split("\n");
   let firstLineIndex = 0;
   for (let i = 0; i < lines.length; i++) {
     if (lines[i].startsWith("top")) {
       firstLineIndex = i;
-      console.log("first line index " + firstLineIndex);
       break;
     }
   }
@@ -106,7 +104,7 @@ function beautify(topText) {
 
   let uptimeString;
   let userCountIndex;
-  if (getInfo(0, 5) == "days,") {
+  if (getInfo(0, 5) == "days," || getInfo(0, 5) == "day,") {
     uptimeString = getInfo(0,4) + " " +  getInfo(0,5) + " " + getInfo(0,6).slice(0, -1);
     userCountIndex = 7;
   } else { //uptime less than 1 day
