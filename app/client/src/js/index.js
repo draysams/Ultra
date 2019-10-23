@@ -140,14 +140,14 @@ function beautify(topText) {
   </div>
   <div class="row">
   <div class="col-4">
-  <p><b>1 min:</b> ` + getInfo(0,userCountIndex + 3).slice(0, -1) + `</p>
+  <p><b>1 min:</b> ` + getInfo(0,userCountIndex + 4).slice(0, -1) + `</p>
   </div>
   <div class="col-4">
-  <p><b>5 min:</b> ` + getInfo(0,userCountIndex + 4).slice(0, -1) + `</p>
+  <p><b>5 min:</b> ` + getInfo(0,userCountIndex + 5).slice(0, -1) + `</p>
 
   </div>
   <div class="col-4">
-  <p><b>15 min:</b> ` + getInfo(0,userCountIndex + 5) + `</p>
+  <p><b>15 min:</b> ` + getInfo(0,userCountIndex + 6) + `</p>
 
   </div>
   </div>
